@@ -1,7 +1,3 @@
-export * from "./FfmpegCommand";
-export * from "./FfmpegX";
-export type * from "./types";
-
 import { FfmpegCommand } from "./FfmpegCommand";
 import { FfmpegX } from "./FfmpegX";
 

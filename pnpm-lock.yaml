@@ -6,14 +6,54 @@ settings:
 
 importers:
 
-  .:
+  packages/cli:
     dependencies:
+      '@quik-fe/flick':
+        specifier: ^1.0.1
+        version: 1.0.1
+      '@types/which':
+        specifier: ^3.0.4
+        version: 3.0.4
       eventemitter3:
         specifier: ^5.0.1
         version: 5.0.1
+      ffmpegx-core:
+        specifier: workspace:*
+        version: link:../core
+      which:
+        specifier: ^5.0.0
+        version: 5.0.0
+      zod:
+        specifier: ^4.1.5
+        version: 4.1.5
+    devDependencies:
+      '@microsoft/api-extractor':
+        specifier: ^7.52.11
+        version: 7.52.11(@types/node@24.3.1)
+      '@types/node':
+        specifier: ^24.3.1
+        version: 24.3.1
+      tslib:
+        specifier: ^2.8.1
+        version: 2.8.1
       tsup:
         specifier: ^8.5.0
         version: 8.5.0(@microsoft/api-extractor@7.52.11(@types/node@24.3.1))(tsx@4.20.5)(typescript@5.9.2)
+      tsx:
+        specifier: ^4.20.5
+        version: 4.20.5
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
+
+  packages/core:
+    dependencies:
+      '@types/which':
+        specifier: ^3.0.4
+        version: 3.0.4
+      eventemitter3:
+        specifier: ^5.0.1
+        version: 5.0.1
       which:
         specifier: ^5.0.0
         version: 5.0.0
@@ -24,12 +64,12 @@ importers:
       '@types/node':
         specifier: ^24.3.1
         version: 24.3.1
-      '@types/which':
-        specifier: ^3.0.4
-        version: 3.0.4
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
+      tsup:
+        specifier: ^8.5.0
+        version: 8.5.0(@microsoft/api-extractor@7.52.11(@types/node@24.3.1))(tsx@4.20.5)(typescript@5.9.2)
       tsx:
         specifier: ^4.20.5
         version: 4.20.5
@@ -236,6 +276,9 @@ packages:
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
+
+  '@quik-fe/flick@1.0.1':
+    resolution: {integrity: sha512-+e1uetU2iOBki8kUArOcLVBMPJSOfBSy5sQNLhpzvbVIDvAnTVKOdONf8iZQGt3fxub6B8AbWSOALH0J8Rrp5g==}
 
   '@rollup/rollup-android-arm-eabi@4.50.0':
     resolution: {integrity: sha512-lVgpeQyy4fWN5QYebtW4buT/4kn4p4IJ+kDNB4uYNT5b8c8DLJDg6titg20NIg7E8RWwdWZORW6vUFfrLyG3KQ==}
@@ -451,6 +494,10 @@ packages:
 
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+
+  commander@13.1.0:
+    resolution: {integrity: sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw==}
+    engines: {node: '>=18'}
 
   commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
@@ -874,6 +921,12 @@ packages:
   yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
 
+  zod@3.25.76:
+    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+
+  zod@4.1.5:
+    resolution: {integrity: sha512-rcUUZqlLJgBC33IT3PNMgsCq6TzLQEG/Ei/KTCU0PedSWRMAXoOUN+4t/0H+Q8bdnLPdqUYnvboJT0bn/229qg==}
+
 snapshots:
 
   '@esbuild/aix-ppc64@0.25.9':
@@ -1020,6 +1073,11 @@ snapshots:
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
+
+  '@quik-fe/flick@1.0.1':
+    dependencies:
+      commander: 13.1.0
+      zod: 3.25.76
 
   '@rollup/rollup-android-arm-eabi@4.50.0':
     optional: true
@@ -1190,6 +1248,8 @@ snapshots:
       color-name: 1.1.4
 
   color-name@1.1.4: {}
+
+  commander@13.1.0: {}
 
   commander@4.1.1: {}
 
@@ -1607,3 +1667,7 @@ snapshots:
       strip-ansi: 7.1.0
 
   yallist@4.0.0: {}
+
+  zod@3.25.76: {}
+
+  zod@4.1.5: {}

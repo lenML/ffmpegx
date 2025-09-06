@@ -140,4 +140,4 @@ vite.config.ts.timestamp-*
 
 # local files
 *.mp4
-/demo_outputs
+demo_outputs/

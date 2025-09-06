@@ -241,21 +241,19 @@ export class FfmpegCommand {
   };
 
   private buildArgs(): string[] {
-    if (!this.inputFile) {
-      throw new Error(
-        "Input file not specified. Please call .setInput() or use a command builder to configure."
-      );
+    // if (!this.inputFile) {
+    //   throw new Error(
+    //     "Input file not specified. Please call .setInput() or use a command builder to configure."
+    //   );
+    // }
+    const finalArgs: string[] = [...this.globalArgs, ...this.inputArgs];
+    if (this.inputFile) {
+      finalArgs.push("-i", this.inputFile);
     }
-    const finalArgs: string[] = [
-      ...this.globalArgs,
-      ...this.inputArgs,
-      "-i",
-      this.inputFile,
-      ...this.outputArgs,
-    ];
+    finalArgs.push(...this.outputArgs);
     if (this.outputFile) {
       finalArgs.push(this.outputFile);
-    } else {
+    } else if (this.inputFile) {
       const hasFormat = this.outputArgs.some(
         (arg, i) => arg === "-f" && i < this.outputArgs.length - 1
       );

@@ -5,8 +5,8 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   clean: true,
-  format: ["cjs", "esm", "iife"],
-  globalName: "ffmpegx",
-  // dts: true,
-  experimentalDts: true,
+  format: ["cjs"],
+  dts: {
+    resolve: true,
+  },
 });
